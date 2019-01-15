@@ -5,7 +5,7 @@ Showing a list of settings on the `/settings` route.
 ## Requirements
 
 ### Global
-* [NodeJS](https://nodejs.org/en/download/)
+* [NodeJS](https://nodejs.org/en/download/) (only tested with `v11.6.0`).
 * [Yarn](https://yarnpkg.com/en/docs/install)
 
 ### Environment file
@@ -31,6 +31,11 @@ You can display the settings on http://localhost:8042/settings.
 * Check ESLint
 ```bash
 yarn lint
+```
+
+* Run tests
+```bash
+yarn test
 ```
 
 * Build for production

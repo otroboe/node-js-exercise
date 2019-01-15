@@ -11,7 +11,8 @@
     "start": "nodemon src/main.js",
     "build": "babel src -d dist",
     "serve": "node dist/main.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -19,6 +20,7 @@
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.9"
   },
   "dependencies": {
@@ -31,10 +33,14 @@
     "extends": "eslint-config-airbnb-base",
     "env": {
       "node": true,
-      "es6": true
+      "es6": true,
+      "jest": true
     },
     "rules": {
-      "arrow-parens": ["error", "as-needed"],
+      "arrow-parens": [
+        "error",
+        "as-needed"
+      ],
       "no-console": "off"
     }
   }
