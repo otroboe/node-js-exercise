@@ -19,15 +19,42 @@ class SettingsRouter {
    * @returns {Promise}
    */
   async init() {
-    const settingsData = await parseFile(this.settingsFilePath);
+    const settingsList = await parseFile(this.settingsFilePath);
     const componentList = await parseFile(this.componentsFilePath);
+    const filteredList = SettingsRouter.filterSettingsList(settingsList, componentList);
 
     this.expressRouter.get('/settings', (req, res) => {
-      res.send(settingsData);
+      res.send(filteredList);
       res.end();
     });
 
     return this.expressRouter;
+  }
+
+  /**
+   * @param {Array} settingsList
+   * @param {Array} componentList
+   * @returns {Array}
+   */
+  static filterSettingsList(settingsList, componentList) {
+    // Put all the component name in an array of string (instead of objects)
+    const componentNameList = componentList.map(item => item.name);
+
+    let settingRequires;
+
+    return settingsList.filter(settingsItem => {
+      ({ requires: settingRequires } = settingsItem);
+
+      if (!Array.isArray(settingRequires)) {
+        return false;
+      }
+
+      if (settingRequires.length === 0) {
+        return true;
+      }
+
+      return settingRequires.some(requiredComponent => componentNameList.includes(requiredComponent));
+    });
   }
 }
 
