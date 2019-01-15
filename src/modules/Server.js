@@ -23,7 +23,12 @@ class Server {
     });
   }
 
-  start() {
+  /**
+   * @param {Object} router express Router
+   */
+  start(router) {
+    this.app.use('/', router);
+
     this.app.listen(this.port, this.host, () => this.onStart());
   }
 

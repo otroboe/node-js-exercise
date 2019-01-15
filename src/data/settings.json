@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Mixer",
+    "requires": ["audio", "pcb"]
+  }, {
+    "name": "AttractLoop",
+    "requires": []
+  }, {
+    "name": "Volume",
+    "requires": ["audio"]
+  }, {
+    "name": "Dummy with no requires key"
+  }, {
+    "name": "Dummy with no listed components",
+    "requires": ["component1", "component2", "component3"]
+  }
+]
