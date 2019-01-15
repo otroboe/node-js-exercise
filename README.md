@@ -38,12 +38,12 @@ yarn lint
 yarn test
 ```
 
-* Build for production
+* Production version with Docker
 ```bash
-yarn build
-```
+# Build the image
+./bin/build.sh
 
-* Start the production version.
-```bash
-yarn serve
+# Run
+./bin/run.sh
 ```
+You can display the settings on http://localhost:8080/settings.
